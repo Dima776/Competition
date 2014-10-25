@@ -1,0 +1,27 @@
+
+<table class="tx-v-competition" >
+	<tr>
+		<td>
+			<f:translate key="tx_vcompetition_domain_model_competition.name" />
+		</td>
+		<td>
+		{competition.name}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_vcompetition_domain_model_competition.photo" />
+		</td>
+		<td>
+				<f:image src="{competition.photo.originalResource.publicUrl}" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_vcompetition_domain_model_competition.description" />
+		</td>
+		<td>
+		{competition.description}
+		</td>
+	</tr>
+</table>

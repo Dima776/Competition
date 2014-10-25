@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-05T16:00:27Z" product-name="v_competition">
+		<header/>
+		<body>
+			<trans-unit id="tx_vcompetition_ext_name">
+				<source>Competition</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vcompetition_ext_desc">
+				<source>Description for this wonderful extension</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vcompetition_domain_model_competition">
+				<source>Competition</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competition.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competition.photo">
+				<source>Photo</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competition.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competitors">
+				<source>Competitors</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competitors.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competitors.file">
+				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competitors.contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competitors.comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competitors.competitionname">
+				<source>Competitionname</source>
+			</trans-unit>
+			<trans-unit id="tx_vcompetition_domain_model_competitors.competitionid">
+				<source>Competitionid</source>
+			</trans-unit>
+		</body>
+	</file>
+	
+	
+		
+	
+</xliff>

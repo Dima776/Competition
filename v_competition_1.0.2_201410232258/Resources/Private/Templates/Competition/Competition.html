@@ -1,0 +1,149 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<style>
+.comp_divider{
+	border: 1px solid rgba(0, 0, 0, 0.07);
+	margin: 10px;
+	margin-bottom: 20px;
+}
+.send_data{
+	margin-left:15px;
+	display: inline-block;
+	font-weight: 700;
+	text-decoration: none;
+	user-select: none;
+	padding: .2em 1em;
+	outline: none;
+	border: 2px solid;
+	border-radius: 1px;
+	transition: 0.2s;
+}
+.send_data:hover { color: rgba(48, 34, 34, 0.32); background: rgba(255,255,255,.2); }
+.send_data:active { color: white; }
+.competition_name{
+	text-align:center;
+    margin: 1em 0 0.5em 0;
+    color: 1px solid rgba(0, 0, 0, 0.07);
+    font-size: 22px;
+    line-height: 40px;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-family: 'Lucida Sans Unicode', fantasy  ;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+input.user_name_data,textarea.contact_data,textarea.comment_data,input.upload_box{
+    color: 1px solid rgba(0, 0, 0, 0.07);
+    font-family: 'Lucida Sans Unicode', fantasy ;  
+}
+
+/*
+.ribbon {
+  font-size: 16px !important;
+ // width: 50%;
+  position: relative;
+  background: #A0CCED;
+  color: #fff;
+  text-align: center;
+  padding: 1em 2em;
+  margin: 2em auto 3em;
+}
+.ribbon:before, .ribbon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -1em;
+  border: 1.5em solid rgba(154, 194, 224, 1);
+  z-index: -1;
+}
+.ribbon:before {
+  left: -2em;
+  border-right-width: 1.5em;
+  border-left-color: transparent;
+}
+.ribbon:after {
+  right: -2em;
+  border-left-width: 1.5em;
+  border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color:rgba(126, 168, 200, 1) transparent transparent transparent;
+  bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+  left: 0;
+  border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+  right: 0;
+  border-width: 1em 1em 0 0;
+} 
+.non-semantic-protector {position: relative; z-index: 1;}
+*/
+
+</style>
+
+<f:flashMessages renderMode="div" />
+<!--
+<div class="non-semantic-protector">
+	<h1 class="ribbon">
+	  <strong class="ribbon-content"> <f:format.printf arguments="{competition : competition}"> {competition.name} </f:format.printf></strong>
+	</h1> 
+</div>
+-->	
+
+	<f:form action="successfulSend" enctype="multipart/form-data"  object="{uploadfile}">
+
+		<f:for each="{competitions}" as="competition">
+	
+
+			<div class="competition_name">	 <f:format.printf arguments="{competition : competition}"> {competition.name} </f:format.printf> </div>
+			
+			<f:if condition="{competition.photo.originalResource.publicUrl} != ''">
+				<f:image src="{competition.photo.originalResource.publicUrl}" class="competition_image" maxWidth="{settings.maxWidth}" alt="{competition.name}" title="{competition.name}"/>  
+			</f:if>
+			
+			<div class="competition_descr">	 <f:format.html>{competition.description}	 </f:format.html> </div>
+		
+			<f:form.hidden name="comp_comment_id" value="{competition.uid}" /> 
+		</f:for>
+	
+	<div class="comp_divider"></div>
+		 
+		<f:form.textfield  name="user_name" class="user_name_data" placeholder="Your name*" required="user_name" size="40"/> 	 <br /><br />
+		
+		<f:if condition="{settings.contact} == '1'">
+			<f:form.textarea  name="comp_contact"  class="contact_data" placeholder="Your contacts"   cols="45"/>  <br /><br />
+		</f:if>
+	
+		<f:form.upload name="file" class="upload_box" /> <br /><br />	
+	
+		<f:form.textarea  name="comp_comment" class="comment_data" placeholder="Your comment" cols="65" />  <br /><br />
+		  
+		<f:form.submit value="Send" class="send_data" />
+
+	</f:form>
+	<br />
+
+
+
+
+</f:section>
